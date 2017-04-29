@@ -6,10 +6,10 @@ module.exports = function(app)
     {
         console.log(res);
         res.send("From API Friends");
-    })
+    });
 
     app.post('/api/friends', function(req,res)
     {
         res.send("Posting");
-    })
+    });
 } 
