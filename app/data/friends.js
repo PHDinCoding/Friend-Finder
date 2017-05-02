@@ -68,7 +68,7 @@ $('#submitButton').on("click", function()
                 //}
             }).done(function(data){
                 // alert(data);
-                alert(data.name +" "+data.score);
+                alert("You Got Matched With: "+data.name +", And Your Compatibility Score is: "+" "+data.score);
                 // $("#questions").html(data);
             } );;
     
