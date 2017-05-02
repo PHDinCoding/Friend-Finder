@@ -1,43 +1,9 @@
-function doSubmit()
-{
-    
-    // var buttonData = $('#menu'+i).val();
-        
-        // score.push(buttonData);
-
-    console.log("This is submit button!");
-    userdata.name   =   $('#nameEntry').val().trim();
-    userdata.photo  =   $('#imageEntry').val().trim();
-    // userdata.score = 
-    // userdata.scores =   $('#imageEntry').val().trim();
-    // console.log(input);
-    console.log(userdata);
-
-    
-        // console.log(buttonData);
-
-        console.log(window.scoreData);
-    
-}
 
 
-// function setValue(  )
-// {
-//         var selText = $(this).text();
 
-//             console.log(selText);
-//             alert("Value: " +selText);
-//             scoreData.menu0 = selText;
-//             alert("Value2: " +scoreData.menu0);
-//             // var scoreValue = selText;
 
-//             // alert("alert: " + selText);
-//             // console.log(scoreValue);
 
-            
-//     }
 
-    window.scoreData = {};
 
     var userdata = {};
 
@@ -55,24 +21,16 @@ $(document).ready(function()
 
 $('#submitButton').on("click", function() 
 {
-
-
     console.log("This is submit button!");
-    
-    
-    // console.log(userdata);
-    // console.log($('#questOne').val());
-
     if(!$('#nameEntry').val() || !$('#imageEntry').val())
     {
-
-    
-    console.log("Name or Image text is empty!");
-
+        alert("Name or Image field is left blank.");
+    // console.log("Name or Image text is empty!");
     
     }else{
 
-        var userdata = 
+
+        userdata = 
         {
             name: $('#nameEntry').val(),
             image: $('#imageEntry').val(),
@@ -94,9 +52,31 @@ $('#submitButton').on("click", function()
     console.log(userdata);
     }
 
+    $.ajax({
+                type: "GET",
+                url: "/api/friends/collectdata",
+                // data:{ Test: "Hello"},
+                // data:{ "userdata": JSON.stringify( userdata ) },
+                data:{ userdata: JSON.stringify( userdata )    },
+                // dataType: "text/html;charset=utf-8"
+                dataType: "json"
+                // ,success: function(msg,status) 
+                //{
+                //    console.log(msg);
+                //    $("#nameOfDive").html(msg);
 
+                //}
+            }).done(function(data){
+                // alert(data);
+                alert(data.name +" "+data.score);
+                // $("#questions").html(data);
+            } );;
     
         
 });
 
+ 
+
 });
+
+// module.exports(userdata);
