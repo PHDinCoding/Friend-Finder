@@ -33,6 +33,7 @@ module.exports = function (app) {
         
         var readData = JSON.parse(fs.readFileSync('app/data/surveyData.json', 'utf8'));
 
+        //THIS IS RIDICULOUS!!!! I HATED THIS HW!!
         content =  readData;
         console.log("THIS IS THE CONTENT LENGTH: "+content.length);
         for (var i = 0; i < content.length; i++) {
